@@ -1,0 +1,3 @@
+Set this to you compiler
+    Visual Studio compiler: /utf-8 /DUNICODE
+    MinGW Compiler: -finput-charset=utf-8 -DUNICODE
