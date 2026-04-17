@@ -20,8 +20,8 @@ void readDataFromFile(const std::string& fileName, std::string& outputData){
 
 
 int main(){
-    std::string fileName1 = "test.txt";
-    std::string fileName2 = "decompresed.txt";
+    std::string fileName1 = "file.txt";
+    std::string fileName2 = "decompresedFile.txt";
 
     int biggestFile;
 

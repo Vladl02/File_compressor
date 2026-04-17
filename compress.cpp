@@ -8,19 +8,19 @@
 #include <cstdint>
 
 #ifdef _WIN32
-#inlcude
+#include <windows.h>
 
 std::string utf16ToUtf8(const std::wstring& utf16Str){
     int sizeNeeded = WideCharToMultiByte(CP_UTF8, 0, utf16Str.c_str(), -1, nullptr, 0, nullptr, nullptr);
-    std::string utf8Str(sizeNeeded, 0)
-    WideCharToMultipleByte(CP_UTF8, 0, utf16Str.c_str(), -1, &utf8Str[0], sizeNeeded, nullptr, nullptr);
+    std::string utf8Str(sizeNeeded, 0);
+    WideCharToMultiByte(CP_UTF8, 0, utf16Str.c_str(), -1, &utf8Str[0], sizeNeeded, nullptr, nullptr);
     return utf8Str;
 }
 
-std::string UTF8StringToWString(const std::string& utf8Str){
+std::wstring UTF8StringToWString(const std::string& utf8Str){
     int sizeNeeded = MultiByteToWideChar(CP_UTF8, 0, utf8Str.c_str(), -1, nullptr, 0);
     std::wstring utf16Str(sizeNeeded, 0);
-    MultiByteToWideChar(CP_UTF8, 0, utf16Str.c_str(), -1, &utf16Str[0], sizeNeeded);
+    MultiByteToWideChar(CP_UTF8, 0, utf8Str.c_str(), -1, &utf16Str[0], sizeNeeded);
     return utf16Str;
 }
 
@@ -111,7 +111,9 @@ std::vector<std::pair<Node*, int>> initListNodes(const std::unordered_map<std::s
 
     std::vector<std::pair<Node*, int>> listNodes;
 
-    for (const auto&[key, value]: map){
+    for (const auto&kv: map){
+        const auto& key = kv.first;
+        const auto& value = kv.second;
         Node* currNode = new Node(key, value, value);
         listNodes.push_back(std::make_pair(currNode, value));
     }
@@ -212,7 +214,9 @@ void storeInBinary(const std::string & filename, std::unordered_map<std::string,
     });
 
     // store the coding table
-    for (const auto&[letter, code]: orderedHash){
+    for (const auto& lc: orderedHash){
+        const auto& letter = lc.first;
+        const auto& code = lc.second;
         uint8_t charSize = letter.size();
 
         binFile.write(reinterpret_cast<const char*>(&charSize), 1);

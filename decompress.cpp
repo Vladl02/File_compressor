@@ -80,7 +80,7 @@ void encodingHashFromHeader(const std::string binData, std::unordered_map<std::s
 }
 
 void decodeBinaryPart(const std::string& binData ,const int startBinaryPartIx, std::unordered_map<std::string, std::string> encodingMap, const std::string outputFileName, uint8_t lastByte){
-    std::ofstream outputFile(outputFileName);
+    std::ofstream outputFile(outputFileName, std::ios::binary | std::ios::out);
     uint8_t currByte;
     int bit;
     int i;

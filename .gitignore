@@ -1,0 +1,36 @@
+# Compiled binaries
+*.exe
+*.out
+*.app
+*.dll
+*.so
+*.dylib
+
+# Object and debug/intermediate files
+*.obj
+*.o
+*.ilk
+*.pdb
+*.idb
+*.iobj
+*.ipdb
+
+# Visual Studio generated folders/files
+.vs/
+Debug/
+Release/
+x64/
+x86/
+*.VC.db
+*.VC.opendb
+
+# CMake / generic build dirs
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+compile_commands.json
+
+# Generated files from this project
+fileBin.bin
+decompresedFile.txt
