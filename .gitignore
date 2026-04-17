@@ -16,6 +16,7 @@
 *.ipdb
 
 # Visual Studio generated folders/files
+.vscode/
 .vs/
 Debug/
 Release/
